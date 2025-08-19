@@ -13,18 +13,18 @@ export const Cast = (id: any) => {
   }
 
   useEffect(() => {
-    console.log("id", id);
-        const fetchMovies = async () => {
-          if(getOptions){
-            fetch(`https://api.themoviedb.org/3/movie/${id.id}/credits?language=en-US&page=1`, getOptions)
-            .then(res => res.json())
-            .then(res => handleCast(res))
-            // .catch(err => console.error(err));
-          }else{
-            fetchMovies();
-          }
-        }
+    const i = id.id;
+    const fetchMovies = async () => {
+      if(i){
+        fetch(`https://api.themoviedb.org/3/movie/${i}/credits?language=en-US&page=1`, getOptions)
+        .then(res => res.json())
+        .then(res => handleCast(res))
+        // .catch(err => console.error(err));
+      }else{
         fetchMovies();
+      }
+    }
+    fetchMovies();
     }, [id]);
 
   return (

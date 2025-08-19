@@ -18,12 +18,15 @@ export const Similar = (id: any) => {
     }
 
     useEffect(() => {
+        const i = id.id;
         const fetchMovies = async () => {
-            if(getOptions){
-                fetch(`https://api.themoviedb.org/3/movie/${id.id}/similar?language=en-US&page=1`, getOptions)
+            if(i){
+                fetch(`https://api.themoviedb.org/3/movie/${i}/similar?language=en-US&page=1`, getOptions)
                 .then(res => res.json())
                 .then(res => handleMovies(res))
                 .catch(err => console.error(err));
+            }else{
+                fetchMovies();
             } 
         }
         fetchMovies();
