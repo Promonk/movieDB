@@ -20,8 +20,6 @@ export const Cast = (id: any) => {
         .then(res => res.json())
         .then(res => handleCast(res))
         // .catch(err => console.error(err));
-      }else{
-        fetchMovies();
       }
     }
     fetchMovies();

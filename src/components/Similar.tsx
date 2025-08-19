@@ -25,9 +25,7 @@ export const Similar = (id: any) => {
                 .then(res => res.json())
                 .then(res => handleMovies(res))
                 .catch(err => console.error(err));
-            }else{
-                fetchMovies();
-            } 
+            }
         }
         fetchMovies();
     }, [id])
