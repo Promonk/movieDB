@@ -23,9 +23,7 @@ export const MovieList = ({api, title}: MovieListProps) => {
     setMovieListType(!listType ? list : poster);    
   }
 
-  useEffect(() => {
-      document.title = `Movies - ${title}`;
-    });
+  useEffect(() => { document.title = `Movies - ${title}`; });
 
   return (
     <main>

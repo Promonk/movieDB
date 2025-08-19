@@ -9,8 +9,6 @@ export const Cast = (id: any) => {
   const [cast, setCast] = useState([]);
 
   const handleCast = (res: any) => {
-    console.log("Cast: ");
-    console.log(res.cast);
     setCast(res.cast);
   }
 
