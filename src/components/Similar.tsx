@@ -27,7 +27,7 @@ export const Similar = (id: any) => {
             } 
         }
         fetchMovies();
-    }, [])
+    }, [id])
 
   return (
     <>

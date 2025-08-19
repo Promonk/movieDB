@@ -13,6 +13,7 @@ export const Cast = (id: any) => {
   }
 
   useEffect(() => {
+    console.log("id", id);
         const fetchMovies = async () => {
           if(getOptions){
             fetch(`https://api.themoviedb.org/3/movie/${id.id}/credits?language=en-US&page=1`, getOptions)
@@ -22,7 +23,7 @@ export const Cast = (id: any) => {
           }
         }
         fetchMovies();
-    }, []);
+    }, [id]);
 
   return (
     <section className="w-full mx-auto">
