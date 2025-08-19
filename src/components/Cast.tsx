@@ -14,10 +14,12 @@ export const Cast = (id: any) => {
 
   useEffect(() => {
         const fetchMovies = async () => {
+          if(getOptions){
             fetch(`https://api.themoviedb.org/3/movie/${id.id}/credits?language=en-US&page=1`, getOptions)
             .then(res => res.json())
             .then(res => handleCast(res))
             .catch(err => console.error(err));
+          }
         }
         fetchMovies();
     }, [id]);

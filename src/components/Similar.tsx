@@ -14,16 +14,17 @@ export const Similar = (id: any) => {
     const [movies, setMovies] = useState([]);
 
     const handleMovies = (res: any) => {
-        console.log(res)
         setMovies(res.results);
     }
 
     useEffect(() => {
         const fetchMovies = async () => {
-            fetch(`https://api.themoviedb.org/3/movie/${id.id}/similar?language=en-US&page=1`, getOptions)
-            .then(res => res.json())
-            .then(res => handleMovies(res))
-            .catch(err => console.error(err));
+            if(getOptions){
+                fetch(`https://api.themoviedb.org/3/movie/${id.id}/similar?language=en-US&page=1`, getOptions)
+                .then(res => res.json())
+                .then(res => handleMovies(res))
+                .catch(err => console.error(err));
+            } 
         }
         fetchMovies();
     }, [id])
@@ -32,18 +33,6 @@ export const Similar = (id: any) => {
     <>
         <section className="w-full mx-auto">
             <div className="w-full inline-flex overflow-hidden">
-                {/* <ul className="flex flex-wrap md:flex-nowrap ">
-                    {movies?.slice(0,).map((movie: any) => (
-                        <li key={movie.id} className="w-[200px]">
-                            <div className="max-w-xs bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 m-3">
-                                <Link to={"/movie/"+movie.id}>
-                                    <Poster path={movie.poster_path}/>
-                                </Link>
-                            </div>
-                        </li>
-                    ))}
-                </ul> */}
-
                 <Swiper 
                     modules={[Navigation, Pagination]}
                     navigation

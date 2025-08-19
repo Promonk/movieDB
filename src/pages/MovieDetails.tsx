@@ -14,9 +14,6 @@ export const MovieDetails = () => {
   const { id } = useParams();
 
   const handleMovie = (result: any) => {
-    console.log("#######################");
-    console.log(result);
-    console.log("#######################");
     setMovie(result);
     setRating(result.vote_average * 10);
     document.title = `${result.title} - Details`;
