@@ -30,7 +30,7 @@ export const Cast = (id: any) => {
             <ul className="flex flex-wrap md:flex-nowrap ">
                 {cast?.slice(0, 8).map((c: any) => (
                     <li key={c.id} className="w-[150px] mx-1">
-                      <div className="max-w-xs bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 m-3">
+                      <div className="max-w-xs bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 m-2">
                         <Person id={c.id}/>
                       </div>
                     </li>
