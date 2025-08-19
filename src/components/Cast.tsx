@@ -22,7 +22,7 @@ export const Cast = (id: any) => {
           }
         }
         fetchMovies();
-    }, [id]);
+    }, []);
 
   return (
     <section className="w-full mx-auto">
