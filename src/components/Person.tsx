@@ -33,8 +33,7 @@
     
     const handlePerson = (res: PersonType) => {
         setPerson(res);
-        fetchImage()
-        console.log(res);
+        fetchImage();
     }
 
     const fetchImage = () =>{

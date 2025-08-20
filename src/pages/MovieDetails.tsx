@@ -5,6 +5,8 @@ import Poster from "../components/Poster";
 import { Cast } from "../components/Cast";
 import { Similar } from "../components/Similar";
 import {getOptions} from "../hooks/getOptions";
+import Reviews from "../components/Reviews";
+import Keywords from "../components/Keywords";
 
 export const MovieDetails = () => {
 
@@ -14,6 +16,9 @@ export const MovieDetails = () => {
   const { id } = useParams();
 
   const handleMovie = (result: any) => {
+    console.log("#################");
+    console.log(result);
+    console.log("#################");
     setMovie(result);
     setRating(result.vote_average * 10);
     document.title = `${result.title} - Details`;
@@ -99,11 +104,24 @@ export const MovieDetails = () => {
           </div>
         </div>
       </section>
-      {/* actors */}
-      <section className="max-w-7xl mx-auto pb-7">
-        <div className="sm:p-2 border-t-[1px] border-slate-300 dark:border-slate-800">
-          <h5 className="mb-1 px-2 text-2xl font-bold text-gray-900 dark:text-white">Top Cast</h5>
-          <Cast id={movie.id}/>
+      <section className="max-w-7xl mx-auto pb-7 flex flex-col md:flex-row">
+        {/* actors */}
+        <div className="w-full  md:w-4/6">
+          <div className="sm:p-2 border-t-[1px] border-slate-300 dark:border-slate-800">
+            <h5 className="mb-1 px-2 text-2xl font-bold text-gray-900 dark:text-white">Top Cast</h5>
+            <Cast id={movie.id}/>
+          </div>
+        </div>
+        
+        <div className="w-full md:w-2/6">
+          <div className="sm:p-2 border-t-[1px] border-slate-300 dark:border-slate-800">
+            {/* reviews */}
+            <h5 className="mb-1 px-2 text-2xl font-bold text-gray-900 dark:text-white">Reviews</h5>
+            <Reviews id={movie.id} />
+
+            <h5 className="mb-1 px-2 text-2xl font-bold text-gray-900 dark:text-white">Keywords</h5>
+            <Keywords id={movie.id} />
+          </div>
         </div>
       </section>
       {/* related */}

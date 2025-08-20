@@ -37,12 +37,10 @@ export const Similar = (id: any) => {
                 <Swiper 
                     modules={[Navigation, Pagination]}
                     navigation
-                    slidesPerView={5}
-                    slidesPerGroup={5} 
-                    spaceBetween={20}
                     breakpoints={{
-                        640: { slidesPerView: 1, spaceBetween: 10, slidesPerGroup: 1  }, // For small screens
-                        768: { slidesPerView: 2, spaceBetween: 15, slidesPerGroup: 2  }, // For medium screens
+                        0: { slidesPerView: 2, spaceBetween: 5, slidesPerGroup: 2  }, // For small screens
+                        640: { slidesPerView: 2, spaceBetween: 5, slidesPerGroup: 2  }, // For small screens
+                        768: { slidesPerView: 3, spaceBetween: 15, slidesPerGroup: 3  }, // For medium screens
                         1024: { slidesPerView: 5, spaceBetween: 20, slidesPerGroup: 5  }, // For large screens
                     }}
                     loop={true}
