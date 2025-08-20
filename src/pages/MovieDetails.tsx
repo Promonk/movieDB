@@ -12,16 +12,27 @@ export const MovieDetails = () => {
 
   const [movie, setMovie] = useState([]) as any;
   const [rating, setRating] = useState(0);
+  const [trailerUrl, setTrailerUrl] = useState("");
 
   const { id } = useParams();
 
   const handleMovie = (result: any) => {
-    console.log("#################");
-    console.log(result);
-    console.log("#################");
     setMovie(result);
     setRating(result.vote_average * 10);
     document.title = `${result.title} - Details`;
+  }
+
+  const handleTrailer = (result: any) => {
+    const l = result.results;
+    for(const k in l){
+      console.log(l[k].key);
+      console.log(l[k].type);
+      if(l[k].type === "Trailer"){
+        const urlKey = l[k].key;
+        setTrailerUrl(`https://www.youtube.com/watch?v=${urlKey}`);
+        console.log("turl",trailerUrl);
+      }
+    }
   }
 
   useEffect(() => {
@@ -32,6 +43,13 @@ export const MovieDetails = () => {
         .catch(err => console.error(err));
       }
     fetchMovie();
+    async function fetchTrailer() {
+      fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, getOptions)
+      .then(res => res.json())
+      .then(res => handleTrailer(res))
+      .catch(err => console.error(err));
+    }
+    fetchTrailer();
   },[id])
 
   return (
@@ -95,8 +113,13 @@ export const MovieDetails = () => {
               
               {/* homepage */}
               {movie.homepage &&
-                <a href={movie.homepage} target="_blank" rel="noreferrer" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <a href={movie.homepage} target="_blank" rel="noreferrer" className="inline-flex mr-1 items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                   Homepage
+                </a>
+              }
+              {trailerUrl &&
+                <a href={trailerUrl} target="_blank" rel="noreferrer" className="inline-flex mr-1 items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  Trailer
                 </a>
               }
               
