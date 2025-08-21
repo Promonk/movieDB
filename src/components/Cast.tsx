@@ -30,7 +30,7 @@ export const Cast = (id: any) => {
         <div className="w-full inline-flex overflow-hidden">
             <ul className="flex flex-wrap ">
                 {cast?.slice(0, 10).map((c: any) => (
-                    <li key={c.id} className="w-[150px] mx-1">
+                    <li key={c.id} className="w-1/2 m-0 md:w-[150px] md:mx-1">
                       <div className="max-w-xs bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 m-2">
                         <Person id={c.id}/>
                       </div>
