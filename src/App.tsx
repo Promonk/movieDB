@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AllRoutes } from './routes/AllRoutes';
 import { Header, Footer } from './components';
 import './App.css';
@@ -11,6 +11,10 @@ const togggleDarkMode = () => {
   document.body.className = darkMode ? "light-mode" : "dark-mode";
   setDarkMode((prevState: boolean) => !prevState);
 }
+
+useEffect(() => {
+  document.body.className = darkMode ? "dark-mode" : "light-mode";
+},[]);
 
   return (
     <>
