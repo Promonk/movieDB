@@ -7,3 +7,12 @@
 html, body {
     height: 100%;
 }
+
+.dark-mode {
+    @apply bg-gray-950;
+}
+
+.light-mode {
+    @apply bg-white;
+}
+

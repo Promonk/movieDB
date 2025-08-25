@@ -7,11 +7,16 @@ function App() {
 
 const [darkMode, setDarkMode] = useState<boolean>(true);
 
+const togggleDarkMode = () => {
+  document.body.className = darkMode ? "light-mode" : "dark-mode";
+  setDarkMode((prevState: boolean) => !prevState);
+}
+
   return (
     <>
     <div className={darkMode ? "App dark" : "App"}>
       <div className=" dark:bg-gray-950">
-        <Header setDarkMode={setDarkMode}/>
+        <Header togggleDarkMode={togggleDarkMode}/>
           <AllRoutes />
         <Footer />
       </div>
